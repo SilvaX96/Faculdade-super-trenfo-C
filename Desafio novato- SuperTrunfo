@@ -1,0 +1,50 @@
+#include <stdio.h>  
+
+int main() {
+    // Declaração de variáveis do tipo string (char arrays) com tamanho suficiente
+    char Estado[50];                 
+    char codigoCarta[50];           
+    char nomeCidade[100];           
+
+    // Demais variáveis com tipos apropriados
+    int populacao;
+    float area;
+    float pib;
+    int NumeroPontosTuristicos;
+
+    // Entrada do nome do Estado (sem espaços)
+    printf("Digite o Estado: \n");
+    scanf("%s", &Estado);  
+
+    // Entrada do código da carta
+    printf("Digite o codigo da Carta: \n");
+    scanf("%s", &codigoCarta);  
+
+    // Entrada do nome da cidade
+    printf("Digite o nome da cidade: \n");
+    scanf(" %s \n", &nomeCidade);  
+    // Lê a linha inteira até a quebra de linha (permite espaços no nome da cidade)
+
+    // Entrada da população (número inteiro)
+    printf("Digite a Populacao: \n");
+    scanf("%d \n", &populacao);  
+
+    // Entrada da área da cidade (número real)
+    printf("Digite a Area: \n");
+    scanf("%f \n", &area);  
+
+    // Entrada do PIB (número real)
+    printf("Digite o PIB: \n");
+    scanf("%f \n", &pib);  
+
+    // Entrada do número de pontos turísticos (inteiro)
+    printf("Digite o numero de pontos turisticos: \n");
+    scanf("%d \n", &NumeroPontosTuristicos); 
+
+    // Exibição dos dados coletados, com formatação
+    printf("Estado: %s - Codigo da carta: %s - Nome da cidade: %s\n", Estado, codigoCarta, nomeCidade);
+    printf("Populacao: %d - Area: %.2f km²\n", populacao, area);  
+    printf("PIB: %.2f - Numero de pontos turisticos: %d\n", pib, NumeroPontosTuristicos);
+
+    return 0;  
+}
