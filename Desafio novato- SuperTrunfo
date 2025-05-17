@@ -12,6 +12,14 @@ int main() {
     float pib;
     int NumeroPontosTuristicos;
 
+      // Novas variáveis
+    float densidadePopulacional;
+    float pibPerCapita;
+    
+    Carta;
+    Carta carta1, carta2;
+    void calcularIndicadores(carta *carta);
+
     // Entrada do nome do Estado (sem espaços)
     printf("Digite o Estado: \n");
     scanf("%s", &Estado);  
@@ -22,29 +30,37 @@ int main() {
 
     // Entrada do nome da cidade
     printf("Digite o nome da cidade: \n");
-    scanf(" %s \n", &nomeCidade);  
+    scanf(" %s ", nomeCidade);  
     // Lê a linha inteira até a quebra de linha (permite espaços no nome da cidade)
 
     // Entrada da população (número inteiro)
     printf("Digite a Populacao: \n");
-    scanf("%d \n", &populacao);  
+    scanf("%d ", &populacao);  
 
-    // Entrada da área da cidade (número real)
-    printf("Digite a Area: \n");
-    scanf("%f \n", &area);  
+    printf("Digite a Area (em km²): \n");
+    scanf("%f", &area);
 
-    // Entrada do PIB (número real)
-    printf("Digite o PIB: \n");
-    scanf("%f \n", &pib);  
+    printf("Digite o PIB (em milhões): \n");
+    scanf("%f", &pib);
 
     // Entrada do número de pontos turísticos (inteiro)
     printf("Digite o numero de pontos turisticos: \n");
     scanf("%d \n", &NumeroPontosTuristicos); 
 
     // Exibição dos dados coletados, com formatação
-    printf("Estado: %s - Codigo da carta: %s - Nome da cidade: %s\n", Estado, codigoCarta, nomeCidade);
+    printf("Estado: %s - Codigo da carta: %s\n", Estado, codigoCarta);
+    printf("nomeCidade: %s\n", nomeCidade);
     printf("Populacao: %d - Area: %.2f km²\n", populacao, area);  
     printf("PIB: %.2f - Numero de pontos turisticos: %d\n", pib, NumeroPontosTuristicos);
 
-    return 0;  
+    // Cálculos
+      carta->densidadePopulacional = carta->populacao / carta->area;
+    carta->pibPerCapita = carta->pib / carta->populacao;
+    if (carta->densidadePopulacional > 1000);
+
+    // Saída formatada
+    printf("\nEstado: %s - Codigo da carta: %s - Nome da cidade: %s\n", Estado, codigoCarta, nomeCidade);
+
+    return 0;
 }
+
