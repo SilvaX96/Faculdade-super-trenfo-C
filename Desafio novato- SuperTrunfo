@@ -1,65 +1,76 @@
-#include <stdio.h>  
+#include <stdio.h>
+#include <string.h>
 
-int main() {
-    // Declaração de variáveis do tipo string (char arrays) com tamanho suficiente
-    char Estado[50];                 
-    char codigoCarta[50];           
-    char nomeCidade[100];           
-
-    // Demais variáveis com tipos apropriados
+// Definição da struct
+typedef struct {
+    char Estado[50];
+    char codigoCarta[50];
+    char nomeCidade[100];
     int populacao;
     float area;
     float pib;
     int NumeroPontosTuristicos;
-
-      // Novas variáveis
     float densidadePopulacional;
     float pibPerCapita;
-    
-    Carta;
-    Carta carta1, carta2;
-    void calcularIndicadores(carta *carta);
+} Carta;
 
-    // Entrada do nome do Estado (sem espaços)
+// Função para preencher os dados de uma carta
+void preencherCarta(Carta *carta, int numero) {
+    printf("\n--- Preenchendo Carta %d ---\n", numero);
+
     printf("Digite o Estado: \n");
-    scanf("%s", &Estado);  
+    scanf("%s", carta->Estado);
 
-    // Entrada do código da carta
     printf("Digite o codigo da Carta: \n");
-    scanf("%s", &codigoCarta);  
+    scanf("%s", carta->codigoCarta);
 
-    // Entrada do nome da cidade
     printf("Digite o nome da cidade: \n");
-    scanf(" %s ", nomeCidade);  
-    // Lê a linha inteira até a quebra de linha (permite espaços no nome da cidade)
+    scanf(" %[^\n]", carta->nomeCidade); // escrevi essa linha dessa forma pois o codigo estava apresentando erro, e nao estava dando espacos necessarios, apos pesquisar encontrei a entrada "%[^\n]" permite ler nomes com espaços, e resolve o erro no meu codigo!!
 
-    // Entrada da população (número inteiro)
     printf("Digite a Populacao: \n");
-    scanf("%d ", &populacao);  
+    scanf("%d", &carta->populacao);
 
     printf("Digite a Area (em km²): \n");
-    scanf("%f", &area);
+    scanf("%f", &carta->area);
 
     printf("Digite o PIB (em milhões): \n");
-    scanf("%f", &pib);
+    scanf("%f", &carta->pib);
 
-    // Entrada do número de pontos turísticos (inteiro)
     printf("Digite o numero de pontos turisticos: \n");
-    scanf("%d \n", &NumeroPontosTuristicos); 
-
-    // Exibição dos dados coletados, com formatação
-    printf("Estado: %s - Codigo da carta: %s\n", Estado, codigoCarta);
-    printf("nomeCidade: %s\n", nomeCidade);
-    printf("Populacao: %d - Area: %.2f km²\n", populacao, area);  
-    printf("PIB: %.2f - Numero de pontos turisticos: %d\n", pib, NumeroPontosTuristicos);
+    scanf("%d", &carta->NumeroPontosTuristicos);
 
     // Cálculos
-      carta->densidadePopulacional = carta->populacao / carta->area;
+    carta->densidadePopulacional = carta->populacao / carta->area;
     carta->pibPerCapita = carta->pib / carta->populacao;
-    if (carta->densidadePopulacional > 1000);
+}
 
-    // Saída formatada
-    printf("\nEstado: %s - Codigo da carta: %s - Nome da cidade: %s\n", Estado, codigoCarta, nomeCidade);
+// Função para exibir os dados de uma carta
+void exibirCarta(Carta carta, int numero) {
+    printf("\n--- Dados da Carta %d ---\n", numero);
+    printf("Estado: %s - Codigo da carta: %s\n", carta.Estado, carta.codigoCarta);
+    printf("Cidade: %s\n", carta.nomeCidade);
+    printf("Populacao: %d\n", carta.populacao);
+    printf("Area: %.2f km²\n", carta.area);
+    printf("PIB: %.2f milhões\n", carta.pib);
+    printf("Pontos Turísticos: %d\n", carta.NumeroPontosTuristicos);
+    printf("Densidade Populacional: %.2f hab/km²\n", carta.densidadePopulacional);
+    printf("PIB per capita: %.2f\n", carta.pibPerCapita);
+
+    if (carta.densidadePopulacional > 1000) {
+        printf("Atenção: Alta densidade populacional!\n");
+    }
+}
+
+int main() {
+    Carta carta1, carta2;
+
+    // Entrada dos dados das duas cartas
+    preencherCarta(&carta1, 1);
+    preencherCarta(&carta2, 2);
+
+    // Exibição dos dados das duas cartas
+    exibirCarta(carta1, 1);
+    exibirCarta(carta2, 2);
 
     return 0;
 }
